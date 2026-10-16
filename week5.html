@@ -1,31 +1,213 @@
-<h3>My Table</h3>
-<table id="table"></table>
-<script>
-  // Enter some javascript code here to make a table
-  (async () => {
-    const my_collection = await (
-      await fetch("https://jsonplaceholder.typicode.com/users")
-    ).json();
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 5 - My Table</title>
+    <style>
+      /* ---------- page ---------- */
+      :root {
+        --bg: #eef1f8;
+        --card: #ffffff;
+        --ink: #1b2430;
+        --muted: #667085;
+        --line: #e3e7ef;
+        --accent: #4f46e5;
+        --accent-soft: #eef0ff;
+        --row-alt: #f8f9fc;
+      }
 
-    document.getElementById("table").innerHTML = `
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${my_collection
-        .map(
-          (item) => `
-          <tr style="background-color: ${item.id % 2 === 0 ? "lightgray" : "white"}">
-            <td>${item.name}</td>
-            <td>${item.email}</td>
-          </tr>
-        `,
-        )
-        .join("")}
-    </tbody>
-  `;
-  })();
-</script>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 3rem 1.25rem;
+        min-height: 100vh;
+        background:
+          radial-gradient(900px 400px at 15% -10%, #dfe4ff, transparent 70%),
+          var(--bg);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: var(--ink);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      /* ---------- card ---------- */
+      .card {
+        width: 100%;
+        max-width: 760px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow:
+          0 1px 2px rgba(16, 24, 40, 0.04),
+          0 12px 32px -12px rgba(16, 24, 40, 0.18);
+        overflow: hidden;
+      }
+
+      .card__header {
+        padding: 1.5rem 1.75rem 1.25rem;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, #fbfcff, #ffffff);
+      }
+
+      .card__header h1 {
+        margin: 0;
+        font-size: 1.4rem;
+        letter-spacing: -0.01em;
+      }
+
+      .card__header p {
+        margin: 0.35rem 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* ---------- table ---------- */
+      .table-wrap {
+        padding: 0.5rem 0.75rem 1rem;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 0.95rem;
+      }
+
+      thead th {
+        position: sticky;
+        top: 0;
+        text-align: left;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--card);
+        padding: 0.9rem 1.1rem;
+        border-bottom: 2px solid var(--accent-soft);
+        white-space: nowrap;
+      }
+
+      tbody td {
+        padding: 0.85rem 1.1rem;
+        border-bottom: 1px solid var(--line);
+        vertical-align: middle;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* zebra striping, done in CSS instead of inline styles */
+      tbody tr:nth-child(odd) {
+        background: var(--row-alt);
+      }
+
+      tbody tr:hover td {
+        background: var(--accent-soft);
+      }
+
+      tbody td:first-child {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      tbody td:last-child {
+        color: var(--muted);
+      }
+
+      /* ---------- states ---------- */
+      .status {
+        padding: 2rem 1.75rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .status--error {
+        color: #b42318;
+        background: #fef3f2;
+      }
+
+      /* ---------- small screens ---------- */
+      @media (max-width: 560px) {
+        body {
+          padding: 1.5rem 0.75rem;
+        }
+
+        .card__header {
+          padding: 1.25rem 1.25rem 1rem;
+        }
+
+        thead th,
+        tbody td {
+          padding: 0.7rem 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <header class="card__header">
+        <h1>My Table</h1>
+        <p>Users loaded from the JSONPlaceholder API</p>
+      </header>
+      <div class="status" id="status">Loading&hellip;</div>
+      <div class="table-wrap">
+        <table id="table"></table>
+      </div>
+    </main>
+
+    <script>
+      // Enter some javascript code here to make a table
+      (async () => {
+        const status = document.getElementById("status");
+        const table = document.getElementById("table");
+
+        try {
+          const my_collection = await (
+            await fetch("https://jsonplaceholder.typicode.com/users")
+          ).json();
+
+          table.innerHTML = `
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${my_collection
+                .map(
+                  (item) => `
+                  <tr>
+                    <td>${item.name}</td>
+                    <td>${item.email}</td>
+                  </tr>
+                `,
+                )
+                .join("")}
+            </tbody>
+          `;
+
+          status.textContent = `Loaded ${my_collection.length} users`;
+          status.hidden = true;
+        } catch (error) {
+          status.classList.add("status--error");
+          status.textContent = "Could not load the data. Please refresh.";
+        }
+      })();
+    </script>
+  </body>
+</html>
