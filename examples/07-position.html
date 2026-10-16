@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>07 — positioning</title>
+  <style>
+    header {
+      /* sticks to the top of the viewport while the page scrolls */
+      position: sticky;
+      top: 0;
+      background: #eee;
+      padding: 8px;
+      border: 1px solid #333;
+      /* keeps the header above the content that scrolls under it */
+      z-index: 1;
+    }
+    /* a positioned parent is the reference for its absolute children */
+    .avatar {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border: 1px solid #333;
+    }
+    .dot {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 16px;
+      height: 16px;
+      background: crimson;
+      border-radius: 50%;
+    }
+    .filler {
+      /* just makes the page long enough to scroll */
+      height: 150vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- Build: a scrolling list with a header that stays, and a badge pinned to an avatar. -->
+  <header>sticky header — scroll down</header>
+  <div class="avatar">
+    <div class="dot"></div>
+  </div>
+  <div class="filler">page content…</div>
+</body>
+</html>

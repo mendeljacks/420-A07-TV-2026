@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>05 — flexbox: wrapping row</title>
+  <style>
+    .row {
+      display: flex;
+      /* let items drop to the next line instead of shrinking forever */
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .card {
+      /* grow, shrink, and start from a 200px basis */
+      flex: 1 1 200px;
+      padding: 12px;
+      border: 1px solid #333;
+    }
+    /* order changes the position without touching the HTML */
+    .sale {
+      order: -1;
+      border-color: #c00;
+    }
+  </style>
+</head>
+<body>
+  <!-- Build: three product cards in a row that stack when the window narrows. -->
+  <div class="row">
+    <div class="card sale">Sale — order: -1</div>
+    <div class="card">Card</div>
+    <div class="card">Card</div>
+  </div>
+</body>
+</html>

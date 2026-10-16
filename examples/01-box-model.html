@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>01 — box model</title>
+    <style>
+      /* one property per line, nothing decorative */
+      .card {
+        width: 320px;
+        padding: 20px;
+        border: 8px solid #0c0;
+      }
+      /* border-box: padding and border grow inwards, so width stays 320px */
+      .card.border-box {
+        box-sizing: border-box;
+      }
+      /* margin: 0 auto centres a block box that has a width */
+      .centred {
+        margin: 0 auto 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Build: one 320px card, centred. Then toggle box-sizing and watch the width jump. -->
+    <div class="card centred">
+      content-box: 320 + 40 padding + 8 border = 368px
+    </div>
+    <div class="card border-box centred">border-box: still 320px</div>
+  </body>
+</html>

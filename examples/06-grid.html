@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>06 — CSS grid: gallery</title>
+  <style>
+    .gallery {
+      display: grid;
+      gap: 12px;
+      /* as many 100px-minimum columns as fit; empty tracks collapse (auto-fit) */
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .tile {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      border: 1px solid #333;
+    }
+    /* one tile takes two columns of the grid */
+    .wide {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Build: 8 tiles filling the width, one of them double width. No media queries. -->
+  <div class="gallery">
+    <div class="tile wide">1 (span 2)</div>
+    <div class="tile">2</div>
+    <div class="tile">3</div>
+    <div class="tile">4</div>
+    <div class="tile">5</div>
+    <div class="tile">6</div>
+    <div class="tile">7</div>
+    <div class="tile">8</div>
+  </div>
+</body>
+</html>

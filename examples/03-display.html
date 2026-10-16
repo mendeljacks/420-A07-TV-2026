@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 — display</title>
+  <style>
+    body {
+      /* breathing room between the demos */
+      line-height: 1.6;
+    }
+    .block {
+      display: block;
+      border: 1px solid #c00;
+      height: 40px;
+    }
+    .inline {
+      display: inline;
+      border: 1px solid #00c;
+      /* width and height are ignored on an inline box — see the border */
+      width: 120px;
+      height: 40px;
+    }
+    .inline-block {
+      display: inline-block;
+      border: 1px solid #0c0;
+      width: 120px;
+      height: 40px;
+    }
+    .none {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Build: five badges. Compare block / inline / inline-block, then toggle .none live. -->
+  <p>block — full width, one per line</p>
+  <div class="block">block</div>
+  <div class="block">block</div>
+
+  <p>inline — width/height ignored, stays on the text line</p>
+  <span class="inline">inline</span>
+  <span class="inline">inline</span>
+
+  <p>inline-block — width/height apply</p>
+  <span class="inline-block">inline-block</span>
+  <span class="inline-block">inline-block</span>
+
+  <div class="none">display: none — delete this rule and it appears</div>
+</body>
+</html>

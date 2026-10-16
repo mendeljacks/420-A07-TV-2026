@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>02 — typography &amp; colour</title>
+    <style>
+      body {
+        /* a font stack: first available wins, sans-serif is the fallback */
+        font-family: system-ui, Arial, sans-serif;
+        color: #333;
+      }
+      /* rem = multiple of the root font size (16px by default) */
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .kicker {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: crimson;
+      }
+      blockquote {
+        line-height: 1.6;
+        background-color: #f0f0f0;
+        border-left: 4px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Build: a recipe blurb — kicker, title, one paragraph, one quote. -->
+    <p class="kicker">Dinner / 20 minutes</p>
+    <h1>Lemon pasta</h1>
+    <p>Boil the pasta. Zest the lemon. Mix everything while it is still hot.</p>
+    <blockquote>
+      Change <code>html { font-size: 20px }</code> and every rem grows.
+    </blockquote>
+  </body>
+</html>

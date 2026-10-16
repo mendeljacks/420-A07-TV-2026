@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>10 — variables &amp; media queries</title>
+  <style>
+    /* custom properties live on :root and are reused with var() */
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --accent: crimson;
+      --gap: 16px;
+    }
+    /* dark mode: same properties, different values */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --fg: #eee;
+      }
+    }
+    body {
+      margin: var(--gap);
+      background: var(--bg);
+      color: var(--fg);
+    }
+    /* mobile first: one column, stacked */
+    .page {
+      display: grid;
+      gap: var(--gap);
+    }
+    .stats {
+      display: grid;
+      gap: var(--gap);
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+    }
+    /* anything 600px and wider gets the two-column layout */
+    @media (min-width: 600px) {
+      .page {
+        grid-template-columns: 120px 1fr;
+      }
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Build: profile page — mobile-first one column, avatar beside text at 600px, dark on dark systems. -->
+  <div class="page">
+    <div class="avatar"></div>
+    <div>
+      <h1>Jane Doe</h1>
+      <p>Front-end student. Resize the window past 600px.</p>
+      <div class="stats">
+        <div>12 projects</div>
+        <div>340 commits</div>
+        <div>3 langs</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>09 — gradients &amp; effects</title>
+    <style>
+      .sky {
+        /* top colour to bottom colour, no image file needed */
+        background: linear-gradient(#4a90d9, #cfe8ff);
+        border: 1px solid #333;
+        padding: 16px;
+      }
+      .sun {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        /* radial gradient: centre colour, then a stop */
+        background: radial-gradient(#fff, gold 60%, orange);
+      }
+      .temp {
+        font-size: 3rem;
+        color: #fff;
+        text-shadow: 1px 1px 3px #0006;
+      }
+      .glass {
+        /* translucent white + a blur of whatever is behind it */
+        background: #ffffff88;
+        backdrop-filter: blur(6px);
+        border: 10px solid #fff;
+        border-radius: 80px;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Build: a weather card — gradient sky, sun, big temperature, frosted panel. -->
+    <div class="sky">
+      <div class="sun"></div>
+      <div class="temp">21°</div>
+      <div class="glass">Frosted panel — backdrop-filter: blur(6px)</div>
+    </div>
+  </body>
+</html>

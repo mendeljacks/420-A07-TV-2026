@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>04 — flexbox: top bar</title>
+    <style>
+      .bar {
+        display: flex;
+        /* main axis (row): push the two children to the far ends */
+        justify-content: space-between;
+        /* cross axis: line them up on their centres */
+        align-items: center;
+        gap: 16px;
+        padding: 8px;
+        border: 1px solid #333;
+      }
+      .logo {
+        font-weight: 700;
+      }
+      .menu {
+        display: flex;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Build: a mobile top bar — logo left, links + button right, all vertically centred. -->
+    <div class="bar">
+      <div class="logo">MyApp</div>
+      <div class="menu">
+        <a href="https://google.com">This is the text of mylink</a>
+        <a href="#">Contact</a>
+        <button>Menu</button>
+      </div>
+    </div>
+  </body>
+</html>

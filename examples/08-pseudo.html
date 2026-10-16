@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>08 — pseudo-classes</title>
+    <style>
+      button {
+        padding: 8px 16px;
+        background: #fff;
+        border: 1px solid #333;
+        cursor: pointer;
+        /* any change of a property animates over 0.2s */
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #ddd;
+      }
+      button:active {
+        background: #bbb;
+      }
+      /* keyboard focus only — try Tab vs. click */
+      button:focus-visible {
+        outline: 3px solid crimson;
+      }
+      li:nth-child(even) {
+        background: red;
+      }
+      li:first-child {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Build: a button with states, and a 6-row list with striped rows. -->
+    <button>Click me</button>
+    <ul>
+      <li>row 1 — :first-child</li>
+      <li>row 2 — :nth-child(even)</li>
+      <li>row 3</li>
+      <li>row 4 — :nth-child(even)</li>
+      <li>row 5</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+      <li>row 6 — :nth-child(even)</li>
+    </ul>
+  </body>
+</html>
